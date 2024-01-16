@@ -11,31 +11,38 @@ function App() {
     bad: 0,
   });
   const totalFeedback = values.good + values.neutral + values.bad;
-  const ifReset= totalFeedback>0
-  const handleClick = (ev )=> {
-    const type = ev.target.textContent;    
-    
-    console.log(ev)
-     if (type==="Reset"){
-      console.log(123)
-     }
-     {
-    setValues(values => ({
-      ...values,
-      [type]: values[type] + 1,     
-    }))
-  }
+  const ifReset = totalFeedback > 0;
+  const handleClickReset = () => {
+    totalFeedback === 0;
+    console.log(totalFeedback);
+  };
+  const handleClick = ev => {
+    const type = ev.target.textContent;
+
+    {
+      setValues(values => ({
+        ...values,
+        [type]: values[type] + 1,
+      }));
+    }
   };
 
-
-    return (
-      <>
-        <Description />
-      <Options values={values} handleClick={handleClick} ifReset={ifReset}/>
-      {!totalFeedback ? <Notification /> : <Feedback values={values} totalFeedback={totalFeedback} />}
-      </>
-    );
-  }
-
+  return (
+    <>
+      <Description />
+      <Options
+        values={values}
+        handleClickReset={handleClickReset}
+        handleClick={handleClick}
+        ifReset={ifReset}
+      />
+      {!totalFeedback ? (
+        <Notification />
+      ) : (
+        <Feedback values={values} totalFeedback={totalFeedback} />
+      )}
+    </>
+  );
+}
 
 export default App;

@@ -1,5 +1,5 @@
 import css from './Options.module.css';
-export const Options = ({ values, handleClick,ifReset }) => {
+export const Options = ({ values, handleClick, ifReset, handleClickReset }) => {
   const keys = Object.keys(values);
 
   return (
@@ -11,9 +11,11 @@ export const Options = ({ values, handleClick,ifReset }) => {
           </button>
         );
       })}
-      {ifReset && <button className={css.btn} type="button">
-            Reset
-          </button>}
+      {ifReset && (
+        <button className={css.btn} type="button" onClick={handleClickReset}>
+          Reset
+        </button>
+      )}
     </div>
   );
 };
