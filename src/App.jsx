@@ -13,8 +13,11 @@ function App() {
   const totalFeedback = values.good + values.neutral + values.bad;
   const ifReset = totalFeedback > 0;
   const handleClickReset = () => {
-    totalFeedback === 0;
-    console.log(totalFeedback);
+    setValues({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
   };
   const handleClick = ev => {
     const type = ev.target.textContent;
